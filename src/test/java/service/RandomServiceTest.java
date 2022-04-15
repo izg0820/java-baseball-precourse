@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.*;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.*;
 
 class RandomServiceTest {
 
@@ -24,6 +24,7 @@ class RandomServiceTest {
         for (Integer n : numberList) {
             hashSet.add(n);
         }
-        assertEquals(3, hashSet.size());
+        assertThat( hashSet.size()).isEqualTo(3);
+
     }
 }

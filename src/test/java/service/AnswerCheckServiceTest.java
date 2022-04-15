@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.*;
 
 class AnswerCheckServiceTest {
 
@@ -20,22 +20,22 @@ class AnswerCheckServiceTest {
     @Test
     void 채점() {
         result = AnswerCheckService.answerCheck("475", "345");
-        assertEquals(1, result.get("BALL"));
-        assertEquals(1, result.get("STRIKE"));
+        assertThat(result.get("BALL")).isEqualTo(1);
+        assertThat(result.get("STRIKE")).isEqualTo(1);
     }
 
     @Test
     void 정답() {
         result = AnswerCheckService.answerCheck("345", "345");
-        assertTrue(AnswerCheckService.isCorrect(result, "345".length()));
+        assertThat(AnswerCheckService.isCorrect(result, "345".length())).isTrue();
 
         result.clear();
         result = AnswerCheckService.answerCheck("123", "345");
-        assertFalse(AnswerCheckService.isCorrect(result, "345".length()));
+        assertThat(AnswerCheckService.isCorrect(result, "345".length())).isFalse();
 
         result.clear();
         result = AnswerCheckService.answerCheck("789", "345");
-        assertTrue(AnswerCheckService.isNothing(result));
+        assertThat(AnswerCheckService.isNothing(result)).isTrue();
 
     }
 }
