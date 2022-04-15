@@ -35,4 +35,8 @@ public class AnswerCheckService {
         return result.get("BALL") == 0 && result.get("STRIKE") == numberSize;
     }
 
+    public static boolean isNothing(HashMap<String, Integer> result) {
+        return result.get("BALL") == 0 && result.get("STRIKE") == 0;
+    }
+
 }

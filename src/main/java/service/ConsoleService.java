@@ -7,9 +7,10 @@ public class ConsoleService {
     public enum Message {
         ENTER_NUMBER ("숫자를 입력해주세요 : "),
         GAME_OVER("3개의숫자를모두맞히셨습니다! 게임종료"),
-        GAME_RESTART("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        GAME_RESTART("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요."),
+        NOTHING("낫싱");
 
-        private final String value;
+       private final String value;
 
         Message(String value) {
             this.value = value;
@@ -33,6 +34,10 @@ public class ConsoleService {
 
     public static void gameRestart() {
         printConsole(Message.GAME_RESTART.getValue());
+    }
+
+    public static void nothing() {
+        printConsole(Message.NOTHING.getValue());
     }
 
     public static void result(int ballCount, int strikeCount) {

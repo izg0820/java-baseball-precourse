@@ -32,5 +32,10 @@ class AnswerCheckServiceTest {
         result.clear();
         result = AnswerCheckService.answerCheck("123", "345");
         assertFalse(AnswerCheckService.isCorrect(result, "345".length()));
+
+        result.clear();
+        result = AnswerCheckService.answerCheck("789", "345");
+        assertTrue(AnswerCheckService.isNothing(result));
+
     }
 }
