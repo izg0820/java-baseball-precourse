@@ -5,23 +5,6 @@ import controller.GameController;
 
 public class ConsoleUtil {
 
-    public enum Message {
-        ENTER_NUMBER ("숫자를 입력해주세요 : "),
-        GAME_OVER(GameController.ANSWER_LENGTH +"개의 숫자를 모두 맞히셨습니다! 게임 종료"),
-        GAME_RESTART("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요."),
-        NOTHING("낫싱");
-
-       private final String value;
-
-        Message(String value) {
-            this.value = value;
-        }
-
-        public String getValue() {
-            return value;
-        }
-    }
-
     public static String readLine() {
         return Console.readLine();
     }
@@ -62,7 +45,7 @@ public class ConsoleUtil {
     private static String setBallCount(int ballCount) {
         String ball = "";
         if(ballCount > 0) {
-            ball = ballCount + "볼";
+            ball = ballCount + Message.BALL.getValue();
         }
         return ball;
     }
@@ -70,7 +53,7 @@ public class ConsoleUtil {
     private static String setStrikeCount(int strikeCount) {
         String strike = "";
         if(strikeCount > 0) {
-            strike = strikeCount + "스트라이크";
+            strike = strikeCount + Message.STRIKE.getValue();
         }
         return strike;
     }
