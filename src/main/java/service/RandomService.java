@@ -2,20 +2,19 @@ package service;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import controller.GameController;
+import utils.StringUtil;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class RandomService {
 
-
-
     public static String getRandomNumbers() {
         List<Integer> numberList = new ArrayList<>();
         while (numberList.size() < GameController.ANSWER_LENGTH) {
             addNumberToList(numberList, Randoms.pickNumberInRange(1, 9));
         }
-        return changeListToString(numberList);
+        return StringUtil.changeListToString(numberList);
     }
 
     private static void addNumberToList(List<Integer> list, int randomNum) {
@@ -28,11 +27,4 @@ public class RandomService {
         return list.contains(randomNum);
     }
 
-    private static String changeListToString(List<Integer> list) {
-        StringBuilder randomNumber = new StringBuilder();
-        for (Integer n : list) {
-            randomNumber.append(n);
-        }
-        return randomNumber.toString();
-    }
 }

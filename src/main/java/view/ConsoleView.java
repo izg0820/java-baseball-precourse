@@ -1,9 +1,11 @@
-package utils;
+package view;
 
 import camp.nextstep.edu.missionutils.Console;
-import controller.GameController;
+import service.AnswerCheckService;
+import utils.Message;
+import utils.MessageUtil;
 
-public class ConsoleUtil {
+public class ConsoleView {
 
     public static String readLine() {
         return Console.readLine();
@@ -35,26 +37,16 @@ public class ConsoleUtil {
     }
 
     public static void result(int ballCount, int strikeCount ) {
-        printConsole(setResultScript(ballCount, strikeCount));
+        printConsole(MessageUtil.setResultScript(ballCount, strikeCount));
     }
 
-    public static String setResultScript(int ballCount, int strikeCount) {
-        return (setBallCount(ballCount) + " " + setStrikeCount(strikeCount)).trim();
-    }
-
-    private static String setBallCount(int ballCount) {
-        String ball = "";
-        if(ballCount > 0) {
-            ball = ballCount + Message.BALL.getValue();
+    public static boolean printResult(int ballCount, int strikeCount, int answerLength) {
+        if (AnswerCheckService.isNothing(ballCount, strikeCount)) {
+            ConsoleView.nothing();
+            return false;
         }
-        return ball;
+        ConsoleView.result(ballCount, strikeCount);
+        return AnswerCheckService.isCorrect(ballCount, strikeCount, answerLength);
     }
 
-    private static String setStrikeCount(int strikeCount) {
-        String strike = "";
-        if(strikeCount > 0) {
-            strike = strikeCount + Message.STRIKE.getValue();
-        }
-        return strike;
-    }
 }

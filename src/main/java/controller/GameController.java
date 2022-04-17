@@ -1,7 +1,7 @@
 package controller;
 
 import service.AnswerCheckService;
-import utils.ConsoleUtil;
+import view.ConsoleView;
 import service.RandomService;
 import service.ValidateService;
 
@@ -19,7 +19,7 @@ public class GameController {
 
     public void start() {
         while ("1".equals(isExit)) {
-            String myAnswer = ConsoleUtil.enterNumber();
+            String myAnswer = ConsoleView.enterNumber();
             validate(myAnswer);
             if(AnswerCheckService.answerCheck(myAnswer, this.randomNumbers)){
                 gameOver();
@@ -29,14 +29,14 @@ public class GameController {
     }
 
     private void restart() {
-        isExit = ConsoleUtil.gameRestart();
+        isExit = ConsoleView.gameRestart();
         if ("1".equals(isExit)) {
             this.randomNumbers = RandomService.getRandomNumbers();
         }
     }
 
     private void gameOver() {
-        ConsoleUtil.gameOver();
+        ConsoleView.gameOver();
     }
 
     private void validate(String myAnswer) {

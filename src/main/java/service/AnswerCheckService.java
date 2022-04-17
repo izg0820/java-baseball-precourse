@@ -1,7 +1,7 @@
 package service;
 
 import controller.GameController;
-import utils.ConsoleUtil;
+import view.ConsoleView;
 
 public class AnswerCheckService {
 
@@ -22,24 +22,14 @@ public class AnswerCheckService {
             }
             ballCount += isBall(myAnswer.charAt(i), answer);
         }
-        return printResult(ballCount, strikeCount, answer.length());
+        return ConsoleView.printResult(ballCount, strikeCount, answer.length());
     }
-
-    private static boolean printResult(int ballCount, int strikeCount, int answerLength) {
-        if (isNothing(ballCount, strikeCount)) {
-            ConsoleUtil.nothing();
-            return false;
-        }
-        ConsoleUtil.result(ballCount, strikeCount);
-        return isCorrect(ballCount, strikeCount, answerLength);
-    }
-
 
     public static boolean isCorrect(int ballCount, int strikeCount, int answerLength) {
         return ballCount == 0 && strikeCount == answerLength;
     }
 
-    private static boolean isNothing(int ballCount, int strikeCount) {
+    public static boolean isNothing(int ballCount, int strikeCount) {
         return ballCount == 0 && strikeCount == 0;
     }
 

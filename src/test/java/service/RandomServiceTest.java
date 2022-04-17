@@ -1,10 +1,12 @@
 package service;
 
+import controller.GameController;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.*;
 
+import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest;
 import static org.assertj.core.api.Assertions.*;
 
 class RandomServiceTest {
@@ -22,7 +24,6 @@ class RandomServiceTest {
         for (int i = 0; i < randomNumbers.length(); i++) {
             hashSet.add(randomNumbers.charAt(i));
         }
-        assertThat( hashSet.size()).isEqualTo(3);
-
+        assertThat( hashSet.size()).isEqualTo(GameController.ANSWER_LENGTH);
     }
 }
