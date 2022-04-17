@@ -14,7 +14,7 @@ class ValidateServiceTest {
 
     @Test
     void 숫자로만_이루어져있는가() {
-        assertThatThrownBy(() -> ValidateService.validateNumber("123"))
+        assertThatThrownBy(() -> ValidateService.validateNumber("12R"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }
