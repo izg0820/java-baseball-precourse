@@ -12,7 +12,8 @@ public enum Message {
     STRIKE("스트라이크"),
     INPUT_NUMBER_SHORT("Input number can't be longer than answer"),
     INPUT_NUMBER_LONG("Input number can't be shorter than answer"),
-    INPUT_NUMBER_NOT_NUMERIC("Input number contain non-numeric characters");
+    INPUT_NUMBER_NOT_NUMERIC("Input number contain non-numeric characters"),
+    INPUT_NUMBER_NOT_IN_RANGE("Input number isn't included in the selection range");
 
     private final String value;
 

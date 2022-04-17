@@ -14,8 +14,15 @@ class ValidateServiceTest {
 
     @Test
     void 숫자로만_이루어져있는가() {
-        assertThatIllegalArgumentException().isThrownBy(()->{
+        assertThatIllegalArgumentException().isThrownBy(() -> {
             ValidateService.validateNumber("12R");
+        });
+    }
+
+    @Test
+    void 선택범위_안을_선택했는가() {
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            ValidateService.validateSelectionRange("3");
         });
     }
 }

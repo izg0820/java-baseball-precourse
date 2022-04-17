@@ -21,4 +21,10 @@ public class ValidateService {
             throw new IllegalArgumentException(Message.INPUT_NUMBER_NOT_NUMERIC.getValue());
         }
     }
+
+    public static void validateSelectionRange(final String input) {
+        if(!GameController.restartOrEnd.contains(input)) {
+            throw new IllegalArgumentException(Message.INPUT_NUMBER_NOT_IN_RANGE.getValue());
+        }
+    }
 }
