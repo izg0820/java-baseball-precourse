@@ -28,7 +28,6 @@ public class GameController {
 
     public void start() {
         while ("1".equals(isExit)) {
-            System.out.println("randomNumbers = " + randomNumbers);
             String myAnswer = ConsoleView.enterNumber();
             validate(myAnswer);
             if(AnswerCheckService.answerCheck(myAnswer, this.randomNumbers)){
