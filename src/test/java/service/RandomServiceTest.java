@@ -9,20 +9,18 @@ import static org.assertj.core.api.Assertions.*;
 
 class RandomServiceTest {
 
-    private List<Integer> numberList = new ArrayList<>();
-
+    String randomNumbers = null;
     @BeforeEach
     void setUp() {
-        RandomService randomService = new RandomService();
-        numberList = randomService.getRandomNumbers();
+        randomNumbers = RandomService.getRandomNumbers();
     }
 
 
     @Test
     void 서로다른_수인가() {
-        HashSet<Integer> hashSet = new HashSet<>();
-        for (Integer n : numberList) {
-            hashSet.add(n);
+        HashSet<Character> hashSet = new HashSet<>();
+        for (int i = 0; i < randomNumbers.length(); i++) {
+            hashSet.add(randomNumbers.charAt(i));
         }
         assertThat( hashSet.size()).isEqualTo(3);
 

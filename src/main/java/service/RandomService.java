@@ -7,21 +7,29 @@ import java.util.List;
 
 public class RandomService {
 
-    public List<Integer> getRandomNumbers() {
+    public static String getRandomNumbers() {
         List<Integer> numberList = new ArrayList<>();
         while (numberList.size() < 3) {
             addNumberToList(numberList, Randoms.pickNumberInRange(1, 9));
         }
-        return numberList;
+        return changeListToString(numberList);
     }
 
-    private void addNumberToList(List<Integer> list, int randomNum) {
+    private static void addNumberToList(List<Integer> list, int randomNum) {
         if(!isNumberInList(list, randomNum)) {
             list.add(randomNum);
         }
     }
 
-    private boolean isNumberInList(List<Integer> list, int randomNum) {
+    private static boolean isNumberInList(List<Integer> list, int randomNum) {
         return list.contains(randomNum);
+    }
+
+    private static String changeListToString(List<Integer> list) {
+        StringBuilder randomNumber = new StringBuilder();
+        for (Integer n : list) {
+            randomNumber.append(n);
+        }
+        return randomNumber.toString();
     }
 }
