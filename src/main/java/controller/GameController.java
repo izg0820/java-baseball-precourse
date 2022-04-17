@@ -1,24 +1,25 @@
-package service;
+package controller;
 
-import camp.nextstep.edu.missionutils.Console;
+import service.AnswerCheckService;
+import utils.ConsoleUtil;
+import service.RandomService;
+import service.ValidateService;
 
-import java.util.HashMap;
-
-public class GameService {
+public class GameController {
 
     private String randomNumbers;
     private String isExit;
 
+    public static final int ANSWER_LENGTH = 3;
 
-    public GameService() {
+    public GameController() {
         this.randomNumbers = RandomService.getRandomNumbers();
         this.isExit = "1";
     }
 
     public void start() {
         while ("1".equals(isExit)) {
-//            System.out.println("randomNumbers = " + randomNumbers);
-            String myAnswer = ConsoleService.enterNumber();
+            String myAnswer = ConsoleUtil.enterNumber();
             validate(myAnswer);
             if(AnswerCheckService.answerCheck(myAnswer, this.randomNumbers)){
                 gameOver();
@@ -28,14 +29,14 @@ public class GameService {
     }
 
     private void restart() {
-        isExit = ConsoleService.gameRestart();
+        isExit = ConsoleUtil.gameRestart();
         if ("1".equals(isExit)) {
             this.randomNumbers = RandomService.getRandomNumbers();
         }
     }
 
     private void gameOver() {
-        ConsoleService.gameOver();
+        ConsoleUtil.gameOver();
     }
 
     private void validate(String myAnswer) {

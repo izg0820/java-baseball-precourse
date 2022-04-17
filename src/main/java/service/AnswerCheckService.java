@@ -1,8 +1,7 @@
 package service;
 
-import java.io.Console;
-import java.nio.charset.StandardCharsets;
-import java.util.HashMap;
+import controller.GameController;
+import utils.ConsoleUtil;
 
 public class AnswerCheckService {
 
@@ -16,7 +15,7 @@ public class AnswerCheckService {
 
     public static boolean answerCheck(String myAnswer, String answer) {
         int ballCount = 0, strikeCount = 0;
-        for (int i = 0; i < answer.length(); i++) {
+        for (int i = 0; i < GameController.ANSWER_LENGTH; i++) {
             if (isStrike(myAnswer.charAt(i), answer.charAt(i))) {
                 strikeCount++;
                 continue;
@@ -28,10 +27,10 @@ public class AnswerCheckService {
 
     private static boolean printResult(int ballCount, int strikeCount, int answerLength) {
         if (isNothing(ballCount, strikeCount)) {
-            ConsoleService.nothing();
+            ConsoleUtil.nothing();
             return false;
         }
-        ConsoleService.result(ballCount, strikeCount);
+        ConsoleUtil.result(ballCount, strikeCount);
         return isCorrect(ballCount, strikeCount, answerLength);
     }
 

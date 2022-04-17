@@ -1,15 +1,18 @@
 package service;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import controller.GameController;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class RandomService {
 
+
+
     public static String getRandomNumbers() {
         List<Integer> numberList = new ArrayList<>();
-        while (numberList.size() < 3) {
+        while (numberList.size() < GameController.ANSWER_LENGTH) {
             addNumberToList(numberList, Randoms.pickNumberInRange(1, 9));
         }
         return changeListToString(numberList);

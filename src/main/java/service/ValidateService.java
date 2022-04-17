@@ -1,13 +1,15 @@
 package service;
 
+import controller.GameController;
+
 public class ValidateService {
 
     public static void validateNumberLength(final String number) {
-        if (number.length() > 3) {
+        if (number.length() > GameController.ANSWER_LENGTH) {
             throw new IllegalArgumentException("Input number can't be longer than answer");
         }
 
-        if (number.length() < 3) {
+        if (number.length() < GameController.ANSWER_LENGTH) {
             throw new IllegalArgumentException("Input number can't be shorter than answer");
         }
     }

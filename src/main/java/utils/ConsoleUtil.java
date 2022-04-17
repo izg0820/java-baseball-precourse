@@ -1,14 +1,13 @@
-package service;
+package utils;
 
 import camp.nextstep.edu.missionutils.Console;
+import controller.GameController;
 
-import java.util.HashMap;
-
-public class ConsoleService {
+public class ConsoleUtil {
 
     public enum Message {
         ENTER_NUMBER ("숫자를 입력해주세요 : "),
-        GAME_OVER("3개의 숫자를 모두 맞히셨습니다! 게임 종료"),
+        GAME_OVER(GameController.ANSWER_LENGTH +"개의 숫자를 모두 맞히셨습니다! 게임 종료"),
         GAME_RESTART("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요."),
         NOTHING("낫싱");
 
