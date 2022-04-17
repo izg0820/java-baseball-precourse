@@ -1,5 +1,7 @@
 package service;
 
+import java.io.Console;
+import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 
 public class AnswerCheckService {
@@ -12,7 +14,7 @@ public class AnswerCheckService {
         return myAnswer == answer;
     }
 
-    public static HashMap<String, Integer> answerCheck(String myAnswer, String answer) {
+    public static boolean answerCheck(String myAnswer, String answer) {
         int ballCount = 0, strikeCount = 0;
         for (int i = 0; i < answer.length(); i++) {
             if (isStrike(myAnswer.charAt(i), answer.charAt(i))) {
@@ -21,22 +23,25 @@ public class AnswerCheckService {
             }
             ballCount += isBall(myAnswer.charAt(i), answer);
         }
-        return setResult(ballCount, strikeCount);
+        return printResult(ballCount, strikeCount, answer.length());
     }
 
-    private static HashMap<String, Integer> setResult(int ball, int strike) {
-        return new HashMap<String, Integer>() {{
-            put("BALL", ball);
-            put("STRIKE", strike);
-        }};
+    private static boolean printResult(int ballCount, int strikeCount, int answerLength) {
+        if (isNothing(ballCount, strikeCount)) {
+            ConsoleService.nothing();
+            return false;
+        }
+        ConsoleService.result(ballCount, strikeCount);
+        return isCorrect(ballCount, strikeCount, answerLength);
     }
 
-    public static boolean isCorrect(HashMap<String, Integer> result, int numberSize) {
-        return result.get("BALL") == 0 && result.get("STRIKE") == numberSize;
+
+    public static boolean isCorrect(int ballCount, int strikeCount, int answerLength) {
+        return ballCount == 0 && strikeCount == answerLength;
     }
 
-    public static boolean isNothing(HashMap<String, Integer> result) {
-        return result.get("BALL") == 0 && result.get("STRIKE") == 0;
+    private static boolean isNothing(int ballCount, int strikeCount) {
+        return ballCount == 0 && strikeCount == 0;
     }
 
 }
